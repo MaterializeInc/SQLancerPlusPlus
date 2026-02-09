@@ -41,3 +41,6 @@ uint4;<RANDOM_POSITIVE_INT>
 uint8;<RANDOM_POSITIVE_INT>
 uuid;'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'
 varchar;'<RANDOM_STRING>'
+regproc;'now'
+regclass;'pg_class'
+regtype;'int4'
