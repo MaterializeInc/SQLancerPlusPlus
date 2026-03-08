@@ -37,7 +37,6 @@ current_catalog 0
 current_database 0
 current_role 0
 current_schema 0
-current_timestamp 0
 current_user 0
 date 1
 date_bin_hopping 3
@@ -120,7 +119,6 @@ mz_row_size 1
 mz_version 0
 mz_version_num 0
 normalize 2
-now 0
 numrange 2
 obj_description 2
 octet_length 1
