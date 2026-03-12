@@ -1,3 +1,0 @@
-Add back BOOLEAN;? in operators.txt when https://github.com/MaterializeInc/database-issues/issues/10058 is fixed
-
-GeneralStatementGenerator mz-specific commands like ANALYZE/VACUUM
