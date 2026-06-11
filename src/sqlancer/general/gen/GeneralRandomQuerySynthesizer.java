@@ -15,7 +15,6 @@ import sqlancer.general.GeneralSchema.GeneralColumn;
 import sqlancer.general.GeneralSchema.GeneralCompositeDataType;
 import sqlancer.general.GeneralSchema.GeneralTable;
 import sqlancer.general.GeneralSchema.GeneralTables;
-import sqlancer.general.ast.GeneralConstant;
 import sqlancer.general.ast.GeneralExpression;
 import sqlancer.general.ast.GeneralJoin;
 import sqlancer.general.ast.GeneralSelect;
@@ -61,14 +60,12 @@ public final class GeneralRandomQuerySynthesizer {
             select.setGroupByExpressions(gen.generateExpressions(Randomly.smallNumber() + 1));
         }
 
-        if (Randomly.getBoolean()) {
-            select.setLimitClause(
-                    GeneralConstant.createIntConstant(Randomly.getNotCachedInteger(0, Integer.MAX_VALUE)));
-        }
-        if (Randomly.getBoolean()) {
-            select.setOffsetClause(
-                    GeneralConstant.createIntConstant(Randomly.getNotCachedInteger(0, Integer.MAX_VALUE)));
-        }
+        // Don't generate LIMIT/OFFSET: queries generated here are used as view
+        // definitions, and views are read by result-comparison oracles. LIMIT/OFFSET
+        // without a fully-determining ORDER BY return an arbitrary subset of the
+        // rows, so two queries reading the same view can legitimately disagree (e.g.
+        // Materialize's TopK picks the first row in arrangement order, which depends
+        // on which view columns the outer query projects).
         if (Randomly.getBoolean()) {
             select.setHavingClause(gen.generateHavingClause());
         }
